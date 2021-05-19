@@ -142,7 +142,9 @@ class SocketServer(
   private fun handleTextMessageSafe(session: WebSocketSession, message: TextMessage) {
     val json = JSONObject(message.payload)
 
-    log.info(message.payload)
+    if (json.getString("op") != "ping") {
+      log.info(message.payload)
+    }
 
     if (!session.isOpen) {
       log.error("Ignoring closing websocket: " + session.remoteAddress!!)
@@ -164,6 +166,7 @@ class SocketServer(
       "configureResuming" -> handlers.configureResuming(context, json)
       "equalizer" -> handlers.equalizer(context, json)
       "filters" -> handlers.filters(context, json.getString("guildId"), message.payload)
+      "ping" -> handlers.pong(context)
       else -> log.warn("Unexpected operation: " + json.getString("op"))
       // @formatter:on
     }

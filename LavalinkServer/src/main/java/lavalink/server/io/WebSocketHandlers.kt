@@ -135,6 +135,11 @@ class WebSocketHandlers(private val contextMap: Map<String, SocketContext>) {
     } catch (ex: Exception) {
       log.error("Error while parsing filters.", ex)
     }
+  }
 
+  fun pong(context: SocketContext) {
+    val payload = JSONObject().append("op", "pong")
+
+    context.send(payload)
   }
 }
