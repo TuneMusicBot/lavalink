@@ -26,11 +26,16 @@ package lavalink.server.config
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
 
-@ConfigurationProperties(prefix = "lavalink.server")
+@ConfigurationProperties(prefix = "lavalink.server.sources")
 @Component
-class ServerConfig {
-  @get:Deprecated("use {@link SentryConfigProperties} instead.")
-  var sentryDsn = ""
-  var playerUpdateInterval: Int = 5
-  var password: String? = ""
+object AudioSourcesConfig {
+
+  var youtube: Boolean = true
+  var bandcamp: Boolean = true
+  var soundcloud: Boolean = true
+  var twitch: Boolean = true
+  var vimeo: Boolean = true
+  var http: Boolean = true
+  var local: Boolean = false
+
 }
