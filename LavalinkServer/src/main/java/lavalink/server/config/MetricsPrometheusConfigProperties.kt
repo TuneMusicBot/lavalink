@@ -21,10 +21,10 @@
  *
  */
 
-package lavalink.server.config;
+package lavalink.server.config
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.stereotype.Component
 
 /**
  * Created by napster on 20.05.18.
@@ -32,6 +32,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("metrics.prometheus")
 class MetricsPrometheusConfigProperties {
-  val enabled = false;
-  val endpoint: String = "";
+  val enabled = false
+  var endpoint: String = ""
+    set(value) { field = value }
 }
