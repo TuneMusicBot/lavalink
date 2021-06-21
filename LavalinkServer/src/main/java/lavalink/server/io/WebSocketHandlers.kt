@@ -161,7 +161,7 @@ class WebSocketHandlers(private val contextMap: Map<String, SocketContext>) {
   }
 
   fun pong(context: SocketContext) {
-    val payload = JSONObject().append("op", "pong")
+    val payload = JSONObject().put("op", "pong")
 
     context.send(payload)
   }
