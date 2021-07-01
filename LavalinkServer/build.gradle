@@ -40,7 +40,7 @@ ext {
 }
 
 bootJar {
-  archiveName = "Lavalink.jar"
+  archiveFileName = "Lavalink.jar"
 }
 
 sourceCompatibility = targetCompatibility = 11
@@ -130,6 +130,10 @@ build {
   doLast {
     println 'Version: ' + version
   }
+}
+
+test {
+  useJUnitPlatform()
 }
 
 compileKotlin {
