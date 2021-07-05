@@ -85,7 +85,6 @@ class SocketServer(
       serverConfig,
       session,
       this,
-      userId,
       koe.newClient(userId.toLong())
     )
 
@@ -185,14 +184,14 @@ class SocketServer(
     private val log = LoggerFactory.getLogger(SocketServer::class.java)
 
     fun sendPlayerUpdate(socketContext: SocketContext, player: Player) {
-      val state = player.state
+      val state = player.getState()
       val connected = socketContext.getMediaConnection(player).gatewayConnection?.isOpen == true
       state.put("connected", connected)
 
       val json = JSONObject()
       json.put("op", "playerUpdate")
       json.put("guildId", player.guildId)
-      json.put("state", player.state)
+      json.put("state", player.getState())
 
       socketContext.send(json)
     }

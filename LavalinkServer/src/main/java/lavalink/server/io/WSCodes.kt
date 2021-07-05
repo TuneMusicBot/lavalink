@@ -21,11 +21,11 @@
  *
  */
 
-package lavalink.server.io;
+package lavalink.server.io
 
-public class WSCodes {
-
-  public static final int INTERNAL_ERROR = 4000;
-  public static final int AUTHORIZATION_REJECTED = 4001;
-
+class WSCodes {
+  companion object {
+    val INTERNAL_ERROR = 4000
+    val AUTHORIZATION_REJECTED = 4001
+  }
 }

@@ -21,22 +21,12 @@
  *
  */
 
-package lavalink.server.player;
+package lavalink.server.player
 
-
-import com.sedmelluq.discord.lavaplayer.track.TrackMarkerHandler;
-
-public class TrackEndMarkerHandler implements TrackMarkerHandler {
-
-  private final Player player;
-
-  public TrackEndMarkerHandler(Player player) {
-    this.player = player;
-  }
-
-  @Override
-  public void handle(MarkerState state) {
-    if (state.equals(MarkerState.REACHED) | state.equals(MarkerState.BYPASSED))
-      player.stop();
-  }
+enum class ResultStatus {
+  TRACK_LOADED,
+  PLAYLIST_LOADED,
+  SEARCH_RESULT,
+  NO_MATCHES,
+  LOAD_FAILED
 }

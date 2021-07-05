@@ -63,7 +63,7 @@ class WebSocketHandlers(private val contextMap: Map<String, SocketContext>) {
     val player = context.getPlayer(json.getString("guildId"))
     val noReplace = json.optBoolean("noReplace", false)
 
-    if (noReplace && player.playingTrack != null) {
+    if (noReplace && player.getPlayingTrack() != null) {
       log.info("Skipping play request because of noReplace")
       return
     }

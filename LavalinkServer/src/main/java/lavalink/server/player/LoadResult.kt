@@ -21,12 +21,23 @@
  *
  */
 
-package lavalink.server.player;
+package lavalink.server.player
 
-public enum ResultStatus {
-  TRACK_LOADED,
-  PLAYLIST_LOADED,
-  SEARCH_RESULT,
-  NO_MATCHES,
-  LOAD_FAILED
+import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack
+
+class LoadResult(
+  val loadResultType: ResultStatus,
+  val tracks: List<AudioTrack>,
+  val playlistName: String?,
+  val selectedTrack: Int?,
+  val exception: FriendlyException? = null
+) {
+  constructor(exception: FriendlyException) : this(
+    ResultStatus.LOAD_FAILED,
+    listOf(),
+    null,
+    null,
+    exception
+  )
 }

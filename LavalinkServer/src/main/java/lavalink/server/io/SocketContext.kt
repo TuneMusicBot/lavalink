@@ -43,10 +43,9 @@ import java.util.concurrent.*
 
 class SocketContext internal constructor(
   val audioPlayerManager: AudioPlayerManager,
-  val serverConfig: ServerConfig,
+  private val serverConfig: ServerConfig,
   private var session: WebSocketSession,
   private val socketServer: SocketServer,
-  val userId: String,
   private val koe: KoeClient
 ) {
 
@@ -71,7 +70,7 @@ class SocketContext internal constructor(
   val playingPlayers: List<Player>
     get() {
       val newList = LinkedList<Player>()
-      players.values.forEach { player -> if (player.isPlaying) newList.add(player) }
+      players.values.forEach { player -> if (player.isPlaying()) newList.add(player) }
       return newList
     }
 

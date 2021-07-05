@@ -68,7 +68,7 @@ object Launcher {
         appendLine(getVanity())
       }
 
-      if (!gitRepoState.isLoaded) {
+      if (!gitRepoState.loaded) {
         appendLine()
         appendLine("$indentation*** Unable to find or load Git metadata ***")
       }
@@ -76,7 +76,7 @@ object Launcher {
       appendLine()
       append("${indentation}Version:        "); appendLine(version)
       append("${indentation}Build:          "); appendLine(buildNumber)
-      if (gitRepoState.isLoaded) {
+      if (gitRepoState.loaded) {
         append("${indentation}Build time:     "); appendLine(buildTime)
         append("${indentation}Branch          "); appendLine(gitRepoState.branch)
         append("${indentation}Commit:         "); appendLine(gitRepoState.commitIdAbbrev)
