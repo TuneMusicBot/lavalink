@@ -21,7 +21,7 @@
  *
  */
 
-package lavalink.server.util;
+package lavalink.server.util
 
 import com.github.natanbc.lavadsp.natives.TimescaleNativeLibLoader
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
@@ -42,10 +42,10 @@ object Util {
     }
 
     TIMESCALE_ENABLED = try {
-      TimescaleNativeLibLoader.loadTimescaleLibrary();
-      true;
+      TimescaleNativeLibLoader.loadTimescaleLibrary()
+      true
     } catch (e: Throwable) {
-      false;
+      false
     }
 
     return TIMESCALE_ENABLED!!
@@ -59,10 +59,10 @@ object Util {
    */
   @JvmStatic
   fun decodeAudioTrack(apm: AudioPlayerManager, message: String): AudioTrack {
-    val base64 = Base64.decodeBase64(message);
+    val base64 = Base64.decodeBase64(message)
     return ByteArrayInputStream(base64) {
       val input = MessageInput(this)
-      apm.decodeTrack(input).decodedTrack;
+      apm.decodeTrack(input).decodedTrack
     }
   }
 

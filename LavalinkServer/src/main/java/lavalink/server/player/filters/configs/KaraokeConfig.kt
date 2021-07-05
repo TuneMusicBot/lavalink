@@ -42,5 +42,5 @@ class KaraokeConfig(
   }
 
   override fun isEnabled(): Boolean = isSet(level, 1f) || isSet(monoLevel, 1f) ||
-    isSet(filterBand, 220f) || isSet(filterWidth, 100f);
+    isSet(filterBand, 220f) || isSet(filterWidth, 100f)
 }
