@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '2.5.0'
+    springBootVersion = '2.5.2'
     gradleGitVersion = '1.5.2'
     sonarqubeVersion = '2.6.2'
     kotlinVersion = '1.5.20'
@@ -61,10 +61,10 @@ subprojects {
     udpQueueVersion            = "1.1.1-linux64"
 
     springBootVersion          = "${springBootVersion}"
-    springWebSocketVersion     = '5.3.7'
+    springWebSocketVersion     = '5.3.8'
     logbackVersion             = '1.2.3'
     sentryLogbackVersion       = '4.3.0'
-    oshiVersion                = '5.7.4'
+    oshiVersion                = '5.7.5'
     jsonOrgVersion             = '20210307'
     spotbugsAnnotationsVersion = '4.2.3'
     prometheusVersion          = '0.11.0'
