@@ -52,6 +52,24 @@ class Player(
   private val player = audioPlayerManager.createPlayer()
   val audioLossCounter = AudioLossCounter()
 
+  /**
+   * The player update interval.
+   */
+  private val interval: Int
+  get() = serverConfig.playerUpdateInterval
+
+  /**
+   * The current audio track that is playing.
+   */
+  val playingTrack: AudioTrack?
+  get() = player.playingTrack
+
+  /**
+   * Whether this player is playing something.
+   */
+  val isPlaying: Boolean
+  get() = player.playingTrack != null && !player.isPaused
+
   private var myFuture: ScheduledFuture<*>? = null
 
   var filters: FilterChain? = null
@@ -72,7 +90,6 @@ class Player(
     player.addListener(audioLossCounter)
   }
 
-
   fun getState(): JSONObject {
     val json = JSONObject()
 
@@ -81,20 +98,6 @@ class Player(
     json.put("time", System.currentTimeMillis())
 
     return json
-  }
-
-  /**
-   * The player update interval.
-   */
-  private fun getInterval(): Int {
-    return serverConfig.playerUpdateInterval
-  }
-
-  /**
-   * The current audio track that is playing.
-   */
-  fun getPlayingTrack(): AudioTrack? {
-    return player.playingTrack
   }
 
   /**
@@ -135,16 +138,9 @@ class Player(
    * @param position The position to seek to.
    */
   fun seekTo(position: Long) {
-    val track = getPlayingTrack() ?: throw RuntimeException("Can't seek when not playing anything")
+    val track = playingTrack ?: throw RuntimeException("Can't seek when not playing anything")
 
     track.position = position
-  }
-
-  /**
-   * Whether this player is playing something.
-   */
-  fun isPlaying(): Boolean {
-    return player.playingTrack != null && !player.isPaused
   }
 
   override fun onTrackEnd(player: AudioPlayer, track: AudioTrack, endReason: AudioTrackEndReason) {
@@ -157,7 +153,7 @@ class Player(
         if (socketContext.sessionPaused) return@Runnable
 
         SocketServer.sendPlayerUpdate(socketContext, this)
-      }, 0, this.getInterval().toLong(), TimeUnit.SECONDS)
+      }, 0, this.interval.toLong(), TimeUnit.SECONDS)
     }
   }
 

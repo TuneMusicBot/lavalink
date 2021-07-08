@@ -70,7 +70,7 @@ class SocketContext internal constructor(
   val playingPlayers: List<Player>
     get() {
       val newList = LinkedList<Player>()
-      players.values.forEach { player -> if (player.isPlaying()) newList.add(player) }
+      players.values.forEach { player -> if (player.isPlaying) newList.add(player) }
       return newList
     }
 
