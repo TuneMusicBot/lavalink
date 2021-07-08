@@ -63,7 +63,7 @@ subprojects {
     springBootVersion          = "${springBootVersion}"
     springWebSocketVersion     = '5.3.8'
     logbackVersion             = '1.2.3'
-    sentryLogbackVersion       = '4.3.0'
+    sentryLogbackVersion       = '5.0.1'
     oshiVersion                = '5.7.5'
     jsonOrgVersion             = '20210307'
     spotbugsAnnotationsVersion = '4.2.3'
