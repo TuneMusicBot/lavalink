@@ -45,9 +45,9 @@ import java.io.StringWriter
 @RestController
 @RequestMapping("\${metrics.prometheus.endpoint:/metrics}")
 @ConditionalOnBean(PrometheusMetrics::class)
-class PrometheusMetricsController(
-  private val registry: CollectorRegistry
-) {
+class PrometheusMetricsController {
+  private val registry = CollectorRegistry.defaultRegistry
+
   @GetMapping(produces = [TextFormat.CONTENT_TYPE_004])
   @Throws(IOException::class)
   fun getMetrics(@RequestParam(name = "name[]", required = false) includedParam: Array<String>?):
