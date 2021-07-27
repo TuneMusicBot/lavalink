@@ -23,8 +23,15 @@
 
 package lavalink.server.info
 
+import com.sedmelluq.discord.lavaplayer.tools.PlayerLibrary
+import org.json.JSONObject
+import org.springframework.boot.SpringBootVersion
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.HttpServletRequest
 
 /**
  * Created by napster on 08.03.19.
@@ -36,5 +43,19 @@ class InfoRestHandler(private val appInfo: AppInfo) {
   @GetMapping("/version")
   fun version(): String {
     return appInfo.getVersionBuild()
+  }
+
+  @GetMapping(value = ["/versions"], produces = ["application/json"])
+  @ResponseBody
+  fun getVersions(request: HttpServletRequest): ResponseEntity<String> {
+    val versions = JSONObject()
+      .put("Spring", SpringBootVersion.getVersion())
+      .put("Build", appInfo.buildNumber.takeUnless { it.startsWith("@") } ?: "Unofficial")
+      .put("Lavaplayer", PlayerLibrary.VERSION)
+      .put("JVM", System.getProperty("java.version"))
+      .put("Kotlin", KotlinVersion.CURRENT)
+      .put("BuildTime", appInfo.buildTime)
+
+    return ResponseEntity(versions.toString(), HttpStatus.OK)
   }
 }
