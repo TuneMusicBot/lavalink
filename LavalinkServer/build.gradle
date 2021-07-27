@@ -47,7 +47,7 @@ sourceCompatibility = targetCompatibility = 11
 
 run {
   //compiling tests during bootRun increases the likelihood of catching broken tests locally instead of on the CI
-  dependsOn compileTestJava
+  dependsOn compileTestKotlin
 
   //pass in custom jvm args
   // source: https://stackoverflow.com/a/25079415
