@@ -78,13 +78,14 @@ object Launcher {
       append("${indentation}Build:          "); appendLine(buildNumber)
       if (gitRepoState.loaded) {
         append("${indentation}Build time:     "); appendLine(buildTime)
-        append("${indentation}Branch          "); appendLine(gitRepoState.branch)
+        append("${indentation}Branch:         "); appendLine(gitRepoState.branch)
         append("${indentation}Commit:         "); appendLine(gitRepoState.commitIdAbbrev)
         append("${indentation}Commit time:    "); appendLine(commitTime)
       }
 
+      append("${indentation}Kotlin:         "); appendLine(KotlinVersion.CURRENT)
       append("${indentation}JVM:            "); appendLine(System.getProperty("java.version"))
-      append("${indentation}Lavaplayer      "); appendLine(PlayerLibrary.VERSION)
+      append("${indentation}Lavaplayer:     "); appendLine(PlayerLibrary.VERSION)
     }
   }
 
