@@ -81,7 +81,7 @@ class AudioLoaderRestHandler(
         obj.put("track", encoded)
         tracks.put(obj)
       } catch (e: IOException) {
-        log.warn("Failed to encode a track ${it.getIdentifier()}, skipping", e)
+        log.warn("Failed to encode a track ${it.identifier}, skipping", e)
       }
     }
 
