@@ -76,7 +76,7 @@ class SocketContext internal constructor(
 
 
   init {
-    executor.scheduleAtFixedRate(StatsTask(this, socketServer), 0, 1, TimeUnit.MINUTES)
+    executor.scheduleAtFixedRate(StatsTask(this, socketServer), 0, serverConfig.statsTaskInterval, TimeUnit.SECONDS)
 
     playerUpdateService = Executors.newScheduledThreadPool(2) { r ->
       val thread = Thread(r)

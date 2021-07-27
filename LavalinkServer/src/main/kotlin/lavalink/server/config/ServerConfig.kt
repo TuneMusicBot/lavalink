@@ -31,4 +31,5 @@ import org.springframework.stereotype.Component
 class ServerConfig {
   var playerUpdateInterval: Int = 5
   var password: String? = ""
+  var statsTaskInterval: Long = 60L
 }
