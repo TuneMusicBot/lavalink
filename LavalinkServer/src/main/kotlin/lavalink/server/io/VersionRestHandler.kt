@@ -25,7 +25,7 @@ class VersionRestHandler {
     log.info("GET $path")
   }
 
-  @GetMapping(value = ["/version", "/versions"], produces = ["application/json"])
+  @GetMapping(value = ["/versions"], produces = ["application/json"])
   @ResponseBody
   fun getVersions(request: HttpServletRequest): ResponseEntity<String> {
     log(request)
