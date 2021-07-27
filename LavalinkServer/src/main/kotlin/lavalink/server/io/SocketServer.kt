@@ -142,9 +142,7 @@ class SocketServer(
   private fun handleTextMessageSafe(session: WebSocketSession, message: TextMessage) {
     val json = JSONObject(message.payload)
 
-    if (json.getString("op") != "ping") {
-      log.info(message.payload)
-    }
+    log.info(message.payload)
 
     if (!session.isOpen) {
       log.error("Ignoring closing websocket: " + session.remoteAddress!!)
