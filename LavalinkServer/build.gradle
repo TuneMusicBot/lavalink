@@ -33,7 +33,7 @@ apply plugin: "com.adarshr.test-logger"
 
 description = 'Play audio to discord voice channels'
 mainClassName = "lavalink.server.Launcher"
-version = "${versionFromTag()}".toString()
+version = versionFromTag()
 
 ext {
   moduleName = 'Lavalink-Server'
@@ -53,7 +53,7 @@ run {
   // source: https://stackoverflow.com/a/25079415
   // example: ./gradlew bootRun -PjvmArgs="--illegal-access=debug -Dwhatever=value"
   if (project.hasProperty('jvmArgs')) {
-    jvmArgs project.jvmArgs.split('\\s+')
+    jvmArgs [project.jvmArgs.split('\\s+')]
   }
 }
 
