@@ -39,16 +39,7 @@ allprojects {
 }
 
 subprojects {
-  apply plugin: 'java'
   apply plugin: 'idea'
-
-  compileJava.dependsOn 'clean'
-  compileJava.options.encoding = 'UTF-8'
-  compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-
-  task sourceJar(type: Jar) {
-    from sourceSets.main.allJava
-  }
 
   ext {
     //@formatter:off
@@ -62,7 +53,7 @@ subprojects {
 
     springBootVersion          = "${springBootVersion}"
     springWebSocketVersion     = '5.3.9'
-    logbackVersion             = '1.2.4'
+    logbackVersion             = '1.2.5'
     sentryLogbackVersion       = '5.0.1'
     oshiVersion                = '5.8.0'
     jsonOrgVersion             = '20210307'
