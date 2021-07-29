@@ -49,12 +49,12 @@ class InfoRestHandler(private val appInfo: AppInfo) {
   @ResponseBody
   fun getVersions(request: HttpServletRequest): ResponseEntity<String> {
     val versions = JSONObject()
-      .put("Spring", SpringBootVersion.getVersion())
-      .put("Build", appInfo.buildNumber.takeUnless { it.startsWith("@") } ?: "Unofficial")
-      .put("Lavaplayer", PlayerLibrary.VERSION)
+      .put("SPRING", SpringBootVersion.getVersion())
+      .put("BUILD", appInfo.buildNumber.takeUnless { it.startsWith("@") } ?: "Unofficial")
+      .put("LAVAPLAYER", PlayerLibrary.VERSION)
       .put("JVM", System.getProperty("java.version"))
-      .put("Kotlin", KotlinVersion.CURRENT)
-      .put("BuildTime", appInfo.buildTime)
+      .put("KOTLIN", KotlinVersion.CURRENT)
+      .put("BUILDTIME", appInfo.buildTime)
 
     return ResponseEntity(versions.toString(), HttpStatus.OK)
   }
