@@ -47,7 +47,9 @@ class AudioLoaderRestHandler(
   
   private fun log(request: HttpServletRequest) {
     val path = request.servletPath
-    log.info("GET $path")
+    val method = request.method
+
+    log.info("$method $path")
   }
 
   private fun trackToJSON(audioTrack: AudioTrack): JSONObject {
