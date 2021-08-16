@@ -76,7 +76,7 @@ dependencies {
   implementation "io.netty:netty-transport-native-epoll:$nettyEpollVersion:linux-x86_64"
 
   // Audio Player
-  implementation group: 'com.sedmelluq', name: 'lavaplayer', version: lavaplayerVersion
+  implementation group: 'com.github.Walkyst', name: 'lavaplayer-fork', version: lavaplayerVersion
   implementation(group: 'com.sedmelluq', name: 'lavaplayer-ext-youtube-rotator', version: lavaplayerIpRotatorVersion) {
     exclude group: "com.sedmelluq", module: "lavaplayer"
   }
