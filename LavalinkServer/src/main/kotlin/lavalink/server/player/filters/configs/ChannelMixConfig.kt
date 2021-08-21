@@ -28,10 +28,10 @@ import com.sedmelluq.discord.lavaplayer.filter.FloatPcmAudioFilter
 import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat
 
 class ChannelMixConfig(
-  private val leftToRight: Float,
-  private val rightToRight: Float,
-  private val rightToLeft: Float,
-  private val leftToLeft: Float
+  private val leftToRight: Float = 0f,
+  private val rightToRight: Float = 1f,
+  private val rightToLeft: Float = 0f,
+  private val leftToLeft: Float = 1f
 ) : FilterConfig() {
   override fun build(format: AudioDataFormat, output: FloatPcmAudioFilter): FloatPcmAudioFilter? {
     return ChannelMixPcmAudioFilter(output)

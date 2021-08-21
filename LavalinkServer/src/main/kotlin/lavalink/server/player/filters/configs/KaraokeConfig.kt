@@ -41,6 +41,5 @@ class KaraokeConfig(
       .setFilterWidth(filterWidth)
   }
 
-  override fun isEnabled(): Boolean = isSet(level, 1f) || isSet(monoLevel, 1f) ||
-    isSet(filterBand, 220f) || isSet(filterWidth, 100f)
+  override fun isEnabled(): Boolean = isSet(level, 1f) || isSet(monoLevel, 1f)
 }
