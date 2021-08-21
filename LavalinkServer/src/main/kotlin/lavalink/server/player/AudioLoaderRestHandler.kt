@@ -65,7 +65,7 @@ class AudioLoaderRestHandler(
       .put("isSeekable", audioTrack.isSeekable)
       .put("source", audioTrack.sourceManager.sourceName)
       .put("position", audioTrack.position)
-      // freyacodes/lavaplayer@97424f0
+      .put("thumbnail", trackInfo.artworkUrl)
       .put("sourceName", audioTrack.sourceManager?.sourceName)
   }
 
