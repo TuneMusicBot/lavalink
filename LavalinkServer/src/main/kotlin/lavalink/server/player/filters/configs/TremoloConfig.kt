@@ -37,6 +37,5 @@ class TremoloConfig(
       .setDepth(depth)
   }
 
-  override fun isEnabled(): Boolean = isSet(frequency, 2f) || isSet(depth, 0.5f)
-
+  override fun isEnabled(): Boolean = isSet(depth, 0f)
 }

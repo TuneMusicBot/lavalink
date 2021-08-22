@@ -37,5 +37,5 @@ class VibratoConfig(
       .setFrequency(frequency)
   }
 
-  override fun isEnabled(): Boolean = depth != 0.0f
+  override fun isEnabled(): Boolean = isSet(depth, 0f)
 }
