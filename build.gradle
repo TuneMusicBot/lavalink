@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    springBootVersion = '2.5.3'
+    springBootVersion = '2.5.4'
     gradleGitVersion = '1.5.2'
     sonarqubeVersion = '2.6.2'
     kotlinVersion = '1.5.21'
@@ -57,10 +57,10 @@ subprojects {
     sentryLogbackVersion       = '5.0.1'
     oshiVersion                = '5.8.0'
     jsonOrgVersion             = '20210307'
-    spotbugsAnnotationsVersion = '4.3.0'
+    spotbugsAnnotationsVersion = '4.4.0'
     prometheusVersion          = '0.11.0'
     commonsLangVersion         = '3.12.0'
-    gsonVersion                = '2.8.7'
+    gsonVersion                = '2.8.8'
     //@formatter:on
   }
 }
