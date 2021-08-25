@@ -3,7 +3,7 @@ buildscript {
     springBootVersion = '2.5.4'
     gradleGitVersion = '1.5.2'
     sonarqubeVersion = '2.6.2'
-    kotlinVersion = '1.5.21'
+    kotlinVersion = '1.5.30'
     testLoggerVersion = '1.6.0'
   }
 
@@ -54,8 +54,8 @@ subprojects {
     springBootVersion          = "${springBootVersion}"
     springWebSocketVersion     = '5.3.9'
     logbackVersion             = '1.2.5'
-    sentryLogbackVersion       = '5.0.1'
-    oshiVersion                = '5.8.0'
+    sentryLogbackVersion       = '5.1.1'
+    oshiVersion                = '5.8.1'
     jsonOrgVersion             = '20210307'
     spotbugsAnnotationsVersion = '4.4.0'
     prometheusVersion          = '0.11.0'
