@@ -45,7 +45,6 @@ class SocketServer(
   koeOptions: KoeOptions
 ) : TextWebSocketHandler() {
 
-  // userId <-> shardCount
   val contextMap = ConcurrentHashMap<String, SocketContext>()
 
   @Suppress("LeakingThis")
