@@ -67,7 +67,6 @@ class SocketServer(
     val userId = session.handshakeHeaders.getFirst("User-Id")!!
     val resumeKey = session.handshakeHeaders.getFirst("Resume-Key")
     val clientName = session.handshakeHeaders.getFirst("Client-Name")
-    val userAgent = session.handshakeHeaders.getFirst("User-Agent")
 
     var resumable: SocketContext? = null
     if (resumeKey != null) resumable = resumableSessions.remove(resumeKey)
@@ -92,12 +91,7 @@ class SocketServer(
       return
     }
 
-    log.info("Connection successfully established")
-    if (userAgent != null) {
-      log.warn("Library developers: Please specify a 'Client-Name' header. User agent: $userAgent")
-    } else {
-      log.warn("Library developers: Please specify a 'Client-Name' header.")
-    }
+    log.warn("Library developers: Please specify a 'Client-Name' header.")
   }
 
   override fun afterConnectionClosed(session: WebSocketSession?, status: CloseStatus?) {
