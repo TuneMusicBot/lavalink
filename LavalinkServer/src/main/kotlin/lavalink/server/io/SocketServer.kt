@@ -147,17 +147,17 @@ class SocketServer(
 
     when (json.getString("op")) {
       // @formatter:off
-      "voiceUpdate" -> handlers.voiceUpdate(context, json)
-      "play" -> handlers.play(context, json)
-      "stop" -> handlers.stop(context, json)
-      "pause" -> handlers.pause(context, json)
-      "seek" -> handlers.seek(context, json)
-      "volume" -> handlers.volume(context, json)
-      "destroy" -> handlers.destroy(context, json)
+      "voiceUpdate"       -> handlers.voiceUpdate(context, json)
+      "play"              -> handlers.play(context, json)
+      "stop"              -> handlers.stop(context, json)
+      "pause"             -> handlers.pause(context, json)
+      "seek"              -> handlers.seek(context, json)
+      "volume"            -> handlers.volume(context, json)
+      "destroy"           -> handlers.destroy(context, json)
       "configureResuming" -> handlers.configureResuming(context, json)
-      "equalizer" -> handlers.equalizer(context, json)
-      "filters" -> handlers.filters(context, json.getString("guildId"), message.payload)
-      "ping" -> handlers.pong(context)
+      "equalizer"         -> handlers.equalizer(context, json)
+      "filters"           -> handlers.filters(context, json.getString("guildId"), message.payload)
+      "ping"              -> handlers.pong(context)
       else -> log.warn("Unexpected operation: " + json.getString("op"))
       // @formatter:on
     }
