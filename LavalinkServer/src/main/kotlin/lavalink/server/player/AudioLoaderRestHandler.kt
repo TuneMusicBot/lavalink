@@ -46,10 +46,7 @@ class AudioLoaderRestHandler(
   }
   
   private fun log(request: HttpServletRequest) {
-    val path = request.servletPath
-    val method = request.method
-
-    log.info("$method $path")
+    log.info("${request.method} ${request.servletPath}")
   }
 
   private fun trackToJSON(audioTrack: AudioTrack): JSONObject {
@@ -63,10 +60,9 @@ class AudioLoaderRestHandler(
       .put("uri", trackInfo.uri)
       .put("isStream", trackInfo.isStream)
       .put("isSeekable", audioTrack.isSeekable)
-      .put("source", audioTrack.sourceManager.sourceName)
+      .put("source", audioTrack.sourceManager?.sourceName)
       .put("position", audioTrack.position)
       .put("thumbnail", trackInfo.artworkUrl)
-      .put("sourceName", audioTrack.sourceManager?.sourceName)
   }
 
   private fun encodeLoadResult(result: LoadResult): JSONObject {
@@ -115,7 +111,7 @@ class AudioLoaderRestHandler(
     return AudioLoader(audioPlayerManager).load(identifier)
       .thenApply(this::encodeLoadResult)
       .thenApply {
-        ResponseEntity<String>(it.toString(), HttpStatus.OK)
+        ResponseEntity(it.toString(), HttpStatus.OK)
       }
   }
 
@@ -127,7 +123,7 @@ class AudioLoaderRestHandler(
 
     val audioTrack = Util.decodeAudioTrack(audioPlayerManager, track)
 
-    return ResponseEntity<String>(trackToJSON(audioTrack).toString(), HttpStatus.OK)
+    return ResponseEntity(trackToJSON(audioTrack).toString(), HttpStatus.OK)
   }
 
   @PostMapping(value = ["/decodetracks"], consumes = ["application/json"], produces = ["application/json"])
@@ -139,7 +135,7 @@ class AudioLoaderRestHandler(
     val requestJSON = JSONArray(body)
     val responseJSON = JSONArray()
 
-    requestJSON.forEachIndexed { i, _ ->
+    for (i in 0 until requestJSON.length()) {
       val track = requestJSON.getString(i)
       val audioTrack = Util.decodeAudioTrack(audioPlayerManager, track)
 
@@ -151,6 +147,6 @@ class AudioLoaderRestHandler(
       responseJSON.put(trackJSON)
     }
 
-    return ResponseEntity<String>(responseJSON.toString(), HttpStatus.OK)
+    return ResponseEntity(responseJSON.toString(), HttpStatus.OK)
   }
 }
