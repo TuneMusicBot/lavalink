@@ -43,7 +43,7 @@ subprojects {
 
   ext {
     //@formatter:off
-    lavaplayerVersion          = '0727f97' // https://github.com/walkyst/lavaplayer-fork/
+    lavaplayerVersion          = '2df7178' // https://github.com/walkyst/lavaplayer-fork/
     lavaplayerIpRotatorVersion = '0.2.3'
     jdaNasVersion              = '1.1.0'
     koeVersion                 = '1864a8b803'
@@ -55,7 +55,7 @@ subprojects {
     springWebSocketVersion     = '5.3.9'
     logbackVersion             = '1.2.5'
     sentryLogbackVersion       = '5.1.2'
-    oshiVersion                = '5.8.1'
+    oshiVersion                = '5.8.2'
     jsonOrgVersion             = '20210307'
     spotbugsAnnotationsVersion = '4.4.0'
     prometheusVersion          = '0.11.0'
