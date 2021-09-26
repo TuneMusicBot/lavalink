@@ -3,7 +3,7 @@ buildscript {
     springBootVersion = '2.5.4'
     gradleGitVersion = '1.5.2'
     sonarqubeVersion = '2.6.2'
-    kotlinVersion = '1.5.30'
+    kotlinVersion = '1.5.31'
     testLoggerVersion = '1.6.0'
   }
 
@@ -27,7 +27,6 @@ buildscript {
 allprojects {
 
   repositories {
-    maven { url "https://dimensional.jfrog.io/artifactory/maven" } // melike2d
     mavenCentral()                     // main maven repo
     jcenter()                          // other stuff
     mavenLocal()                       // useful for developing
@@ -49,15 +48,14 @@ subprojects {
     koeVersion                 = '1864a8b803'
     lavaDspVersion             = '0.7.7'
     nettyEpollVersion          = "4.1.66.Final"
-    udpQueueVersion            = "1.1.1-linux64"
 
     springBootVersion          = "${springBootVersion}"
-    springWebSocketVersion     = '5.3.9'
-    logbackVersion             = '1.2.5'
+    springWebSocketVersion     = '5.3.10'
+    logbackVersion             = '1.2.6'
     sentryLogbackVersion       = '5.1.2'
     oshiVersion                = '5.8.2'
     jsonOrgVersion             = '20210307'
-    spotbugsAnnotationsVersion = '4.4.0'
+    spotbugsAnnotationsVersion = '4.4.1'
     prometheusVersion          = '0.11.0'
     commonsLangVersion         = '3.12.0'
     gsonVersion                = '2.8.8'
