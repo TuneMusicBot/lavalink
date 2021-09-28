@@ -91,6 +91,7 @@ class SocketServer(
       return
     }
 
+    log.info("Connection successfully established.")
     log.warn("Library developers: Please specify a 'Client-Name' header.")
   }
 

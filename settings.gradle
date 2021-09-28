@@ -1,4 +1,0 @@
-rootProject.name = 'Lavalink-Parent'
-include ':Lavalink-Server'
-
-project(':Lavalink-Server').projectDir = "$rootDir/LavalinkServer" as File

@@ -27,3 +27,5 @@ application.yml
 .project
 .classpath
 .settings
+
+VERSION.txt
