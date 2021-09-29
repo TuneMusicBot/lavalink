@@ -119,7 +119,7 @@ dependencies {
   // Audio Player
   implementation("com.github.Walkyst:lavaplayer-fork:$lavaplayerVersion")
   implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:$lavaplayerIpRotatorVersion") {
-    exclude("com.sedmelluq:lavaplayer")
+    exclude("com.sedmelluq", "lavaplayer")
   }
 
   // Filters
