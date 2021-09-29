@@ -26,11 +26,13 @@ package lavalink.server.config
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager
 import com.sedmelluq.discord.lavaplayer.source.bandcamp.BandcampAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.getyarn.GetyarnAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.http.HttpAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.local.LocalAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.soundcloud.*
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexMusicAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.track.playback.NonAllocatingAudioFrameBuffer
 import com.sedmelluq.lava.extensions.youtuberotator.YoutubeIpRotatorSetup
@@ -100,8 +102,10 @@ class AudioPlayerConfiguration {
     }
 
     if (sources.bandcamp) audioPlayerManager.registerSourceManager(BandcampAudioSourceManager())
+    if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.twitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
     if (sources.vimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
+    if (sources.yandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager())
     if (sources.http) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
     if (sources.local) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
 

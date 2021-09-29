@@ -13,12 +13,17 @@ lavalink:
       bufferDurationMs: 400
       byteBufAllocator: "default"
     sources:
-      youtube: true
+      # Remote sources
       bandcamp: true
+      getyarn: true
+      http: true
       soundcloud: true
       twitch: true
       vimeo: true
-      http: true
+      yandex: true
+      youtube: true
+
+      # Local source
       local: false
     lavaplayer:
       nonAllocating: false # Whether to use the non-allocating frame buffer.
