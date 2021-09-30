@@ -32,6 +32,7 @@ lavalink:
       gc-warnings: true
       youtubeSearchEnabled: true
       soundcloudSearchEnabled: true
+      yandexMusicSearchEnabled: true
       #ratelimit:
         #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
         #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink

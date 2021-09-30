@@ -33,6 +33,7 @@ class LavaplayerConfigProperties {
   var isGcWarnings = true
   var isYoutubeSearchEnabled = true
   var isSoundcloudSearchEnabled = true
+  var isYandexMusicSearchEnabled = true
   var ratelimit: RateLimitConfig? = null
   var nonAllocating: Boolean = false
   var frameBufferDuration: Int = 5000

@@ -105,7 +105,7 @@ class AudioPlayerConfiguration {
     if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.twitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
     if (sources.vimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
-    if (sources.yandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager())
+    if (sources.yandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(lavaplayerProps.isYandexMusicSearchEnabled))
     if (sources.http) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
     if (sources.local) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
 
