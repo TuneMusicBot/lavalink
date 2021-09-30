@@ -85,22 +85,7 @@ class AudioPlayerConfiguration {
       audioPlayerManager.registerSourceManager(youtube)
     }
 
-    if (sources.soundcloud) {
-      val dataReader = DefaultSoundCloudDataReader()
-      val htmlDataLoader = DefaultSoundCloudDataLoader()
-      val formatHandler = DefaultSoundCloudFormatHandler()
-
-      audioPlayerManager.registerSourceManager(
-        SoundCloudAudioSourceManager(
-          lavaplayerProps.isSoundcloudSearchEnabled,
-          dataReader,
-          htmlDataLoader,
-          formatHandler,
-          DefaultSoundCloudPlaylistLoader(htmlDataLoader, dataReader, formatHandler)
-        )
-      )
-    }
-
+    if (sources.soundcloud) audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.createDefault(lavaplayerProps.isSoundcloudSearchEnabled))
     if (sources.bandcamp) audioPlayerManager.registerSourceManager(BandcampAudioSourceManager())
     if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.twitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
