@@ -117,7 +117,7 @@ dependencies {
   implementation("io.netty:netty-transport-native-epoll:$nettyEpollVersion:linux-x86_64")
 
   // Audio Player
-  implementation("com.github.Walkyst:lavaplayer-fork:$lavaplayerVersion")
+  implementation("com.github.davidffa:lavaplayer-fork:$lavaplayerVersion")
   implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:$lavaplayerIpRotatorVersion") {
     exclude("com.sedmelluq", "lavaplayer")
   }
