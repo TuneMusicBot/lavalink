@@ -33,6 +33,7 @@ object AudioSourcesConfig {
   var bandcamp: Boolean = true
   var getyarn: Boolean = true
   var http: Boolean = true
+  var odysee: Boolean = true
   var soundcloud: Boolean = true
   var twitch: Boolean = true
   var vimeo: Boolean = true

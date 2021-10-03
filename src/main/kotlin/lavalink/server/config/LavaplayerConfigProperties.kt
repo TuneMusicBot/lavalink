@@ -32,6 +32,7 @@ class LavaplayerConfigProperties {
   var youtubePlaylistLoadLimit: Int? = null
   var isGcWarnings = true
   var isYoutubeSearchEnabled = true
+  var isOdyseeSearchEnabled = true
   var isSoundcloudSearchEnabled = true
   var isYandexMusicSearchEnabled = true
   var ratelimit: RateLimitConfig? = null

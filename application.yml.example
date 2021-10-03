@@ -17,6 +17,7 @@ lavalink:
       bandcamp: true
       getyarn: true
       http: true
+      odysee: true
       soundcloud: true
       twitch: true
       vimeo: true
@@ -31,6 +32,7 @@ lavalink:
       youtubePlaylistLoadLimit: 6 # Number of pages at 100 each
       gc-warnings: true
       youtubeSearchEnabled: true
+      odyseeSearchEnabled: true
       soundcloudSearchEnabled: true
       yandexMusicSearchEnabled: true
       #ratelimit:

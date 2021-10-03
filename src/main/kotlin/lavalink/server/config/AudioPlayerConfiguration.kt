@@ -29,6 +29,7 @@ import com.sedmelluq.discord.lavaplayer.source.bandcamp.BandcampAudioSourceManag
 import com.sedmelluq.discord.lavaplayer.source.getyarn.GetyarnAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.http.HttpAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.local.LocalAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.odysee.OdyseeAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.soundcloud.*
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
@@ -85,6 +86,7 @@ class AudioPlayerConfiguration {
       audioPlayerManager.registerSourceManager(youtube)
     }
 
+    if (sources.odysee) audioPlayerManager.registerSourceManager(OdyseeAudioSourceManager(lavaplayerProps.isOdyseeSearchEnabled))
     if (sources.soundcloud) audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.createDefault(lavaplayerProps.isSoundcloudSearchEnabled))
     if (sources.bandcamp) audioPlayerManager.registerSourceManager(BandcampAudioSourceManager())
     if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
