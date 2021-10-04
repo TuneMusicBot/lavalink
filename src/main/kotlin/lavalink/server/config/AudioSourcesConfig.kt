@@ -34,6 +34,7 @@ object AudioSourcesConfig {
   var getyarn: Boolean = true
   var http: Boolean = true
   var odysee: Boolean = true
+  var reddit: Boolean = true
   var soundcloud: Boolean = true
   var twitch: Boolean = true
   var vimeo: Boolean = true

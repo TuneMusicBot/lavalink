@@ -30,7 +30,8 @@ import com.sedmelluq.discord.lavaplayer.source.getyarn.GetyarnAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.http.HttpAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.local.LocalAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.odysee.OdyseeAudioSourceManager
-import com.sedmelluq.discord.lavaplayer.source.soundcloud.*
+import com.sedmelluq.discord.lavaplayer.source.reddit.RedditAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.soundcloud.SoundCloudAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexMusicAudioSourceManager
@@ -86,13 +87,14 @@ class AudioPlayerConfiguration {
       audioPlayerManager.registerSourceManager(youtube)
     }
 
-    if (sources.odysee) audioPlayerManager.registerSourceManager(OdyseeAudioSourceManager(lavaplayerProps.isOdyseeSearchEnabled))
     if (sources.soundcloud) audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.createDefault(lavaplayerProps.isSoundcloudSearchEnabled))
     if (sources.bandcamp) audioPlayerManager.registerSourceManager(BandcampAudioSourceManager())
-    if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.twitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
     if (sources.vimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
+    if (sources.reddit) audioPlayerManager.registerSourceManager(RedditAudioSourceManager())
+    if (sources.odysee) audioPlayerManager.registerSourceManager(OdyseeAudioSourceManager(lavaplayerProps.isOdyseeSearchEnabled))
     if (sources.yandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(lavaplayerProps.isYandexMusicSearchEnabled))
+    if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.http) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
     if (sources.local) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
 

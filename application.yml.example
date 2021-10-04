@@ -18,6 +18,7 @@ lavalink:
       getyarn: true
       http: true
       odysee: true
+      reddit: true
       soundcloud: true
       twitch: true
       vimeo: true
