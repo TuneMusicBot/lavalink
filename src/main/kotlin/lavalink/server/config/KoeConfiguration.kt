@@ -52,8 +52,8 @@ class KoeConfiguration(val configProperties: KoeConfigProperties) {
 
     /* JDA-NAS */
     // Maybe add Windows natives back?
-    val nasSupported = os.contains("linux", ignoreCase = true)
-      && arch.equals("amd64", ignoreCase = true)
+    val nasSupported = os.contains("linux", true)
+      && arch.equals("amd64", true)
 
     if (nasSupported) {
       log.info("Enabling JDA-NAS")
