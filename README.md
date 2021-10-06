@@ -7,7 +7,8 @@ A custom lavalink forked from [melike2d](https://github.com/melike2d/lavalink).
 - Refactorings
 - Remove useless files
 - Dependency updates
-- Use [custom lavaplayer-fork](https://github.com/walkyst/lavaplayer-fork/tree/custom) from [Walkyst](https://github.com/walkyst) (fixes soundcloud, ytmsearch, provide artworkUrl on Track object, etc).
+- Use [my custom lavaplayer-fork](https://github.com/davidffa/lavaplayer-fork/tree/custom) from [Walkyst](https://github.com/walkyst).
+- Add Getyarn, Reddit, Yandex Music, Odysee sources. Yandex & Odysee search (`ymsearch:` `odsearch:` prefixes).
 - Added WebSocket op code "ping" (responds with `{ "op": "pong" }`, useful to check WS ping).
 - Added GET /versions route, returns info about jvm version, kotlin version, spring version, build time, etc.
 
