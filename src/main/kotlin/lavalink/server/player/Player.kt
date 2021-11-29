@@ -101,6 +101,13 @@ class Player(
   }
 
   /**
+   * Destroys the AudioPlayer
+   */
+  fun destroy() {
+    player.destroy()
+  }
+
+  /**
    * Sets the pause state.
    * @param state The pause state.
    */
