@@ -103,9 +103,7 @@ class Player(
   /**
    * Destroys the AudioPlayer
    */
-  fun destroy() {
-    player.destroy()
-  }
+  fun destroy() = player.destroy()
 
   /**
    * Sets the pause state.
@@ -123,7 +121,6 @@ class Player(
     player.volume = volume
   }
 
-
   /**
    * Plays an audio track.
    * @param track The track to play.
@@ -136,9 +133,7 @@ class Player(
   /**
    * Stops the currently playing track.
    */
-  fun stop() {
-    player.stopTrack()
-  }
+  fun stop() = player.stopTrack()
 
   /**
    * Seek to the specified position in the current playing song.
