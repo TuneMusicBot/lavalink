@@ -158,8 +158,14 @@ class WebSocketHandlers {
     }
   }
 
-  fun pong(context: SocketContext) {
+  fun pong(context: SocketContext, json: JSONObject) {
     val payload = JSONObject().put("op", "pong")
+
+    if (json.has("guildId")) {
+      val mediaConnection = context.getMediaConnection(context.getPlayer(json.getString("guildId")))
+
+      payload.put("ping", mediaConnection.gatewayConnection?.ping ?: 0)
+    }
 
     context.send(payload)
   }

@@ -105,10 +105,10 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
   // Audio Sending
-  implementation("moe.kyokobot.koe:ext-udpqueue:$koeVersion") {
+  implementation("com.github.davidffa.koe:ext-udpqueue:$koeVersion") {
     exclude("com.sedmelluq", "lavaplayer")
   }
-  implementation("moe.kyokobot.koe:core:$koeVersion") {
+  implementation("com.github.davidffa.koe:core:$koeVersion") {
     exclude("org.slf4j", "slf4j-api")
     exclude("com.sedmelluq", "lavaplayer")
   }
