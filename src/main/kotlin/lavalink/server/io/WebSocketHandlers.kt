@@ -33,7 +33,7 @@ import org.json.JSONObject
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-class WebSocketHandlers(private val contextMap: Map<String, SocketContext>) {
+class WebSocketHandlers {
 
   companion object {
     private val log: Logger = LoggerFactory.getLogger(WebSocketHandlers::class.java)

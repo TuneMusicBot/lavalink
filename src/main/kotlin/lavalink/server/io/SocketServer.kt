@@ -47,8 +47,7 @@ class SocketServer(
 
   val contextMap = ConcurrentHashMap<String, SocketContext>()
 
-  @Suppress("LeakingThis")
-  private val handlers = WebSocketHandlers(contextMap)
+  private val handlers = WebSocketHandlers()
   private val resumableSessions = mutableMapOf<String, SocketContext>()
   private val koe = Koe.koe(koeOptions)
 
