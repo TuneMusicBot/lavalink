@@ -28,12 +28,12 @@ import com.sedmelluq.discord.lavaplayer.filter.FloatPcmAudioFilter
 import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat
 
 class RotationConfig(
-  private val speed: Float = 1f
+  private val rotationHz: Float = 1f
 ) : FilterConfig() {
   override fun build(format: AudioDataFormat, output: FloatPcmAudioFilter): FloatPcmAudioFilter? {
     return RotationPcmAudioFilter(output, format.sampleRate)
-      .setRotationSpeed(speed.toDouble())
+      .setRotationSpeed(rotationHz.toDouble())
   }
 
-  override fun isEnabled(): Boolean = isSet(speed, 0f)
+  override fun isEnabled(): Boolean = isSet(rotationHz, 0f)
 }
