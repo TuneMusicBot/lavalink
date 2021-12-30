@@ -91,6 +91,13 @@ class EventEmitter(
 
     out.put("error", exception.message)
 
+    val exceptionJson = JSONObject()
+      .put("message", exception.message)
+      .put("severity", exception.severity.toString())
+      .put("cause", Util.getRootCause(exception.cause!!).toString())
+
+    out.put("exception", exceptionJson)
+
     linkPlayer.socketContext.send(out)
   }
 

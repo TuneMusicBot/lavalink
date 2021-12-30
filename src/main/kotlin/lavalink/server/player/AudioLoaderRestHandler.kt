@@ -60,7 +60,7 @@ class AudioLoaderRestHandler(
       .put("uri", trackInfo.uri)
       .put("isStream", trackInfo.isStream)
       .put("isSeekable", audioTrack.isSeekable)
-      .put("source", audioTrack.sourceManager?.sourceName)
+      .put("sourceName", audioTrack.sourceManager?.sourceName)
       .put("position", audioTrack.position)
       .put("thumbnail", trackInfo.artworkUrl)
   }

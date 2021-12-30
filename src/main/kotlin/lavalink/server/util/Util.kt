@@ -98,4 +98,14 @@ object Util {
     return ByteArrayInputStream(buf)
       .use(block)
   }
+
+  fun getRootCause(throwable: Throwable): Throwable {
+    var rootCause = throwable
+
+    while (rootCause.cause != null) {
+      rootCause = rootCause.cause!!
+    }
+
+    return rootCause
+  }
 }
