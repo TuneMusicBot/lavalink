@@ -182,7 +182,7 @@ class SocketServer(
       val json = JSONObject()
       json.put("op", "playerUpdate")
       json.put("guildId", player.guildId)
-      json.put("state", player.getState())
+      json.put("state", state)
 
       socketContext.send(json)
     }
