@@ -36,7 +36,6 @@ import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceMan
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexMusicAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
-import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeHttpContextFilter
 import com.sedmelluq.discord.lavaplayer.track.playback.NonAllocatingAudioFrameBuffer
 import com.sedmelluq.lava.extensions.youtuberotator.YoutubeIpRotatorSetup
 import com.sedmelluq.lava.extensions.youtuberotator.planner.*
@@ -69,7 +68,11 @@ class AudioPlayerConfiguration {
     }
 
     if (sources.youtube) {
-      val youtube = YoutubeAudioSourceManager(lavaplayerProps.isYoutubeSearchEnabled)
+      val youtube = YoutubeAudioSourceManager(
+        lavaplayerProps.isYoutubeSearchEnabled,
+        lavaplayerProps.youtubeConfig?.email,
+        lavaplayerProps.youtubeConfig?.password
+      )
       if (routePlanner != null) {
         val retryLimit = lavaplayerProps.ratelimit?.retryLimit ?: -1
         when {
@@ -98,13 +101,6 @@ class AudioPlayerConfiguration {
     if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.http) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
     if (sources.local) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
-
-    if (lavaplayerProps.youtubeConfig?.PAPISID != null && lavaplayerProps.youtubeConfig?.PSID != null) {
-      YoutubeHttpContextFilter.setPAPISID(lavaplayerProps.youtubeConfig?.PAPISID)
-      YoutubeHttpContextFilter.setPSID(lavaplayerProps.youtubeConfig?.PSID)
-    } else {
-      log.warn("No PAPISID or PSID set! YouTube age restricted tracks may not play properly.")
-    }
 
     audioPlayerManager.configuration.isFilterHotSwapEnabled = true
     audioPlayerManager.frameBufferDuration = lavaplayerProps.frameBufferDuration
