@@ -94,7 +94,7 @@ class EventEmitter(
     val exceptionJson = JSONObject()
       .put("message", exception.message)
       .put("severity", exception.severity.toString())
-      .put("cause", Util.getRootCause(exception.cause!!).toString())
+      .put("cause", Util.getRootCause(exception).toString())
 
     out.put("exception", exceptionJson)
 
