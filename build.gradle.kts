@@ -125,7 +125,7 @@ dependencies {
   implementation("io.prometheus:simpleclient_servlet:$prometheusVersion")
 
   // Native System Stuff
-  implementation("com.github.oshi:oshi-core:6.0.0")
+  implementation("com.github.oshi:oshi-core:6.1.0")
 
   // Json
   implementation("org.json:json:20210307")
