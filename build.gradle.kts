@@ -25,32 +25,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.grgit.Grgit
 
-val kotlinVersion: String by project
-
-val lavaplayerVersion: String by project
-val lavaplayerIpRotatorVersion: String by project
-val jdaNasVersion: String by project
-val koeVersion: String by project
-val lavaDspVersion: String by project
-val nettyEpollVersion: String by project
-
-val springBootVersion: String by project
-val springWebSocketVersion: String by project
-val logbackVersion: String by project
-val sentryLogbackVersion: String by project
-val oshiVersion: String by project
-val jsonOrgVersion: String by project
-val spotbugsAnnotationsVersion: String by project
-val prometheusVersion: String by project
-val commonsLangVersion: String by project
-val gsonVersion: String by project
-
 buildscript {
-  val gradleGitVersion: String by project
-  val springBootVersion: String by project
-  val sonarqubeVersion: String by project
-  val testLoggerVersion: String by project
-  val kotlinVersion: String by project
+  val kotlinVersion = "1.6.0"
+  val springBootVersion = "2.6.2"
 
   repositories {
     mavenLocal()
@@ -60,24 +37,24 @@ buildscript {
   }
 
   dependencies {
-    classpath("com.gorylenko.gradle-git-properties:gradle-git-properties:$gradleGitVersion")
+    classpath("com.gorylenko.gradle-git-properties:gradle-git-properties:2.3.1")
     classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-    classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqubeVersion")
+    classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
-    classpath("com.adarshr:gradle-test-logger-plugin:$testLoggerVersion")
+    classpath("com.adarshr:gradle-test-logger-plugin:1.6.0")
   }
 }
 
 plugins {
   application
   idea
-  id("org.springframework.boot")
-  id("com.gorylenko.gradle-git-properties")
-  id("org.ajoberstar.grgit")
-  kotlin("jvm")
-  kotlin("plugin.spring")
-  id("com.adarshr.test-logger")
+  id("org.springframework.boot") version "2.6.2"
+  id("com.gorylenko.gradle-git-properties") version "2.3.1"
+  id("org.ajoberstar.grgit") version "4.1.0"
+  kotlin("jvm") version "1.6.0"
+  kotlin("plugin.spring") version "1.6.0"
+  id("com.adarshr.test-logger") version "1.6.0"
 }
 
 group = "lavalink"
@@ -101,6 +78,11 @@ repositories {
   maven("https://m2.dv8tion.net/releases")
 }
 
+val kotlinVersion = "1.6.0"
+val springBootVersion = "2.6.2"
+val prometheusVersion = "0.14.1"
+val koeVersion = "4835255"
+
 dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
@@ -114,43 +96,43 @@ dependencies {
   }
 
   // Transport
-  implementation("io.netty:netty-transport-native-epoll:$nettyEpollVersion:linux-x86_64")
+  implementation("io.netty:netty-transport-native-epoll:4.1.72.Final:linux-x86_64")
 
   // Audio Player
-  implementation("com.github.davidffa:lavaplayer-fork:$lavaplayerVersion")
-  implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:$lavaplayerIpRotatorVersion") {
+  implementation("com.github.davidffa:lavaplayer-fork:0cb6a3a")
+  implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:0.2.3") {
     exclude("com.sedmelluq", "lavaplayer")
   }
 
   // Filters
-  implementation("com.github.natanbc:lavadsp:$lavaDspVersion") {
+  implementation("com.github.natanbc:lavadsp:0.7.7") {
     exclude("com.sedmelluq", "lavaplayer")
   }
 
   // Spring
-  implementation("org.springframework:spring-websocket:$springWebSocketVersion")
+  implementation("org.springframework:spring-websocket:5.3.15")
   implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
     exclude("org.springframework.boot", "spring-boot-starter-tomcat")
   }
   implementation("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
 
   // Logging and Statistics
-  implementation("ch.qos.logback:logback-classic:$logbackVersion")
-  implementation("io.sentry:sentry-logback:$sentryLogbackVersion")
+  implementation("ch.qos.logback:logback-classic:1.2.10")
+  implementation("io.sentry:sentry-logback:5.6.0")
   implementation("io.prometheus:simpleclient:$prometheusVersion")
   implementation("io.prometheus:simpleclient_hotspot:$prometheusVersion")
   implementation("io.prometheus:simpleclient_logback:$prometheusVersion")
   implementation("io.prometheus:simpleclient_servlet:$prometheusVersion")
 
   // Native System Stuff
-  implementation("com.github.oshi:oshi-core:$oshiVersion")
+  implementation("com.github.oshi:oshi-core:6.0.0")
 
   // Json
-  implementation("org.json:json:$jsonOrgVersion")
-  implementation("com.google.code.gson:gson:$gsonVersion")
+  implementation("org.json:json:20210307")
+  implementation("com.google.code.gson:gson:2.8.9")
 
   // Test stuff
-  compileOnly("com.github.spotbugs:spotbugs-annotations:$spotbugsAnnotationsVersion")
+  compileOnly("com.github.spotbugs:spotbugs-annotations:4.5.3")
   testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
 
