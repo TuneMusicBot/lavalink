@@ -39,6 +39,8 @@ lavalink:
       #youtubeConfig: (Youtube account credentials, needed to play age restricted tracks)
         #email: ""
         #password: ""
+      # You can get your yandex oauth token here https://music-yandex-bot.ru/ used to remove the 30s limit on some tracks
+      #yandexOAuthToken:
       #ratelimit:
         #ipBlocks: ["1.0.0.0/8", "..."] # list of ip blocks
         #excludedIps: ["...", "..."] # ips which should be explicit excluded from usage by lavalink

@@ -37,6 +37,7 @@ class LavaplayerConfigProperties {
   var isYandexMusicSearchEnabled = true
   var ratelimit: RateLimitConfig? = null
   var youtubeConfig: YoutubeConfig? = null
+  var yandexOAuthToken: String? = null
   var nonAllocating: Boolean = false
   var frameBufferDuration: Int = 5000
 }

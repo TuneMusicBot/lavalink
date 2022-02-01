@@ -34,6 +34,7 @@ import com.sedmelluq.discord.lavaplayer.source.reddit.RedditAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.soundcloud.SoundCloudAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexHttpContextFilter
 import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexMusicAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.track.playback.NonAllocatingAudioFrameBuffer
@@ -97,7 +98,10 @@ class AudioPlayerConfiguration {
     if (sources.vimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
     if (sources.reddit) audioPlayerManager.registerSourceManager(RedditAudioSourceManager())
     if (sources.odysee) audioPlayerManager.registerSourceManager(OdyseeAudioSourceManager(lavaplayerProps.isOdyseeSearchEnabled))
-    if (sources.yandex) audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(lavaplayerProps.isYandexMusicSearchEnabled))
+    if (sources.yandex) {
+      audioPlayerManager.registerSourceManager(YandexMusicAudioSourceManager(lavaplayerProps.isYandexMusicSearchEnabled))
+      YandexHttpContextFilter.setOAuthToken(lavaplayerProps.yandexOAuthToken)
+    }
     if (sources.getyarn) audioPlayerManager.registerSourceManager(GetyarnAudioSourceManager())
     if (sources.http) audioPlayerManager.registerSourceManager(HttpAudioSourceManager())
     if (sources.local) audioPlayerManager.registerSourceManager(LocalAudioSourceManager())
