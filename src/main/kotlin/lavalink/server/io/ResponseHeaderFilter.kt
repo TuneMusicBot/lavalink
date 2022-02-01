@@ -38,6 +38,7 @@ class ResponseHeaderFilter : OncePerRequestFilter() {
     filterChain: FilterChain
   ) {
     response.addHeader("Lavalink-Api-Version", "3")
+    response.addHeader("Lavalink-Version", "davidffa/lavalink")
     filterChain.doFilter(request, response)
   }
 }
