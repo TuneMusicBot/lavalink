@@ -26,8 +26,11 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.grgit.Grgit
 
 buildscript {
-  val kotlinVersion = "1.6.0"
+  val kotlinVersion     = "1.6.0"
+  val gradleGitVersion  = "2.3.1"
   val springBootVersion = "2.6.2"
+  val sonarqubeVersion  = "3.3"
+  val testLoggerVersion = "1.6.0"
 
   repositories {
     mavenLocal()
@@ -37,12 +40,12 @@ buildscript {
   }
 
   dependencies {
-    classpath("com.gorylenko.gradle-git-properties:gradle-git-properties:2.3.1")
+    classpath("com.gorylenko.gradle-git-properties:gradle-git-properties:$gradleGitVersion")
     classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
-    classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3")
+    classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqubeVersion")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     classpath("org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion")
-    classpath("com.adarshr:gradle-test-logger-plugin:1.6.0")
+    classpath("com.adarshr:gradle-test-logger-plugin:$testLoggerVersion")
   }
 }
 
@@ -78,10 +81,23 @@ repositories {
   maven("https://m2.dv8tion.net/releases")
 }
 
-val kotlinVersion = "1.6.0"
-val springBootVersion = "2.6.2"
-val prometheusVersion = "0.14.1"
-val koeVersion = "4835255"
+val kotlinVersion              = "1.6.0"
+
+val lavaplayerVersion          = "0cb6a3a"
+val lavaplayerIpRotatorVersion = "0.2.3"
+val nettyEpollVersion          = "4.1.72.Final:linux-x86_64"
+val lavadspVersion             = "0.7.7"
+
+val springBootVersion          = "2.6.3"
+val springWebSocketVersion     = "5.3.15"
+val prometheusVersion          = "0.14.1"
+val koeVersion                 = "4835255"
+val logbackVersion             = "1.2.10"
+val sentryVersion              = "5.6.0"
+val oshiVersion                = "6.1.0"
+val jsonOrgVersion             = "20210307"
+val gsonVersion                = "2.8.9"
+val spotbugsAnnotationsVersion = "4.5.3"
 
 dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
@@ -96,43 +112,43 @@ dependencies {
   }
 
   // Transport
-  implementation("io.netty:netty-transport-native-epoll:4.1.72.Final:linux-x86_64")
+  implementation("io.netty:netty-transport-native-epoll:$nettyEpollVersion")
 
   // Audio Player
-  implementation("com.github.davidffa:lavaplayer-fork:0cb6a3a")
-  implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:0.2.3") {
+  implementation("com.github.davidffa:lavaplayer-fork:$lavaplayerVersion")
+  implementation("com.sedmelluq:lavaplayer-ext-youtube-rotator:$lavaplayerIpRotatorVersion") {
     exclude("com.sedmelluq", "lavaplayer")
   }
 
   // Filters
-  implementation("com.github.natanbc:lavadsp:0.7.7") {
+  implementation("com.github.natanbc:lavadsp:$lavadspVersion") {
     exclude("com.sedmelluq", "lavaplayer")
   }
 
   // Spring
-  implementation("org.springframework:spring-websocket:5.3.15")
+  implementation("org.springframework:spring-websocket:$springWebSocketVersion")
   implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
     exclude("org.springframework.boot", "spring-boot-starter-tomcat")
   }
   implementation("org.springframework.boot:spring-boot-starter-undertow:$springBootVersion")
 
   // Logging and Statistics
-  implementation("ch.qos.logback:logback-classic:1.2.10")
-  implementation("io.sentry:sentry-logback:5.6.0")
+  implementation("ch.qos.logback:logback-classic:$logbackVersion")
+  implementation("io.sentry:sentry-logback:$sentryVersion")
   implementation("io.prometheus:simpleclient:$prometheusVersion")
   implementation("io.prometheus:simpleclient_hotspot:$prometheusVersion")
   implementation("io.prometheus:simpleclient_logback:$prometheusVersion")
   implementation("io.prometheus:simpleclient_servlet:$prometheusVersion")
 
   // Native System Stuff
-  implementation("com.github.oshi:oshi-core:6.1.0")
+  implementation("com.github.oshi:oshi-core:$oshiVersion")
 
   // Json
-  implementation("org.json:json:20210307")
-  implementation("com.google.code.gson:gson:2.8.9")
+  implementation("org.json:json:$jsonOrgVersion")
+  implementation("com.google.code.gson:gson:$gsonVersion")
 
   // Test stuff
-  compileOnly("com.github.spotbugs:spotbugs-annotations:4.5.3")
+  compileOnly("com.github.spotbugs:spotbugs-annotations:$spotbugsAnnotationsVersion")
   testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
 
