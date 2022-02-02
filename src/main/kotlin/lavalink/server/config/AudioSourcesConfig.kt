@@ -36,6 +36,7 @@ object AudioSourcesConfig {
   var odysee: Boolean = true
   var reddit: Boolean = true
   var soundcloud: Boolean = true
+  var tiktok: Boolean = true
   var twitch: Boolean = true
   var vimeo: Boolean = true
   var yandex: Boolean = true

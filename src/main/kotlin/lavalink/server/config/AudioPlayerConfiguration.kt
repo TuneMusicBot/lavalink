@@ -32,6 +32,7 @@ import com.sedmelluq.discord.lavaplayer.source.local.LocalAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.odysee.OdyseeAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.reddit.RedditAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.soundcloud.SoundCloudAudioSourceManager
+import com.sedmelluq.discord.lavaplayer.source.tiktok.TiktokAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.twitch.TwitchStreamAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.vimeo.VimeoAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.yamusic.YandexHttpContextFilter
@@ -94,6 +95,7 @@ class AudioPlayerConfiguration {
 
     if (sources.soundcloud) audioPlayerManager.registerSourceManager(SoundCloudAudioSourceManager.createDefault(lavaplayerProps.isSoundcloudSearchEnabled))
     if (sources.bandcamp) audioPlayerManager.registerSourceManager(BandcampAudioSourceManager())
+    if (sources.tiktok) audioPlayerManager.registerSourceManager(TiktokAudioSourceManager())
     if (sources.twitch) audioPlayerManager.registerSourceManager(TwitchStreamAudioSourceManager())
     if (sources.vimeo) audioPlayerManager.registerSourceManager(VimeoAudioSourceManager())
     if (sources.reddit) audioPlayerManager.registerSourceManager(RedditAudioSourceManager())

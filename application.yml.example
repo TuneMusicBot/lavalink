@@ -20,6 +20,7 @@ lavalink:
       odysee: true
       reddit: true
       soundcloud: true
+      tiktok: true
       twitch: true
       vimeo: true
       yandex: true
