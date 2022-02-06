@@ -29,9 +29,9 @@ import com.sedmelluq.discord.lavaplayer.format.AudioDataFormat
 import lavalink.server.util.Util
 
 class TimescaleConfig(
-  private val speed: Float = 1f,
+  val speed: Float = 1f,
   private val pitch: Float = 1f,
-  private val rate: Float = 1f
+  val rate: Float = 1f
 ) : FilterConfig() {
   override fun build(format: AudioDataFormat, output: FloatPcmAudioFilter): FloatPcmAudioFilter {
     return TimescalePcmAudioFilter(output, format.channelCount, format.sampleRate)

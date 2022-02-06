@@ -42,7 +42,7 @@ class FilterChain : PcmFilterFactory {
   var volume: Float? = null
   var equalizer: List<Band>? = null
   private val karaoke: KaraokeConfig? = null
-  private val timescale: TimescaleConfig? = null
+  val timescale: TimescaleConfig? = null
   private val tremolo: TremoloConfig? = null
   private val distortion: DistortionConfig? = null
   private val lowPass: LowPassConfig? = null

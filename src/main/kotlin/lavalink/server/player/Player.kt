@@ -51,6 +51,7 @@ class Player(
 ) : AudioEventAdapter() {
   private val player = audioPlayerManager.createPlayer()
   val audioLossCounter = AudioLossCounter()
+  var realPosition: Double? = null
 
   /**
    * The player update interval.
@@ -94,7 +95,7 @@ class Player(
     val json = JSONObject()
 
     if (player.playingTrack != null)
-      json.put("position", player.playingTrack.position)
+      json.put("position", realPosition!!.toLong())
     json.put("time", System.currentTimeMillis())
 
     return json
@@ -143,6 +144,7 @@ class Player(
     val track = playingTrack ?: throw RuntimeException("Can't seek when not playing anything")
 
     track.position = position
+    realPosition = position.toDouble()
   }
 
   override fun onTrackEnd(player: AudioPlayer, track: AudioTrack, endReason: AudioTrackEndReason) {
@@ -150,6 +152,8 @@ class Player(
   }
 
   override fun onTrackStart(player: AudioPlayer, track: AudioTrack) {
+    realPosition = track.position.toDouble()
+
     if (myFuture == null || myFuture!!.isCancelled) {
       myFuture = socketContext.playerUpdateService.scheduleAtFixedRate(Runnable {
         if (socketContext.sessionPaused) return@Runnable
@@ -177,7 +181,15 @@ class Player(
 
     override fun canProvide(): Boolean {
       val sent = player.provide(lastFrame)
-      if (!sent) {
+
+      if (sent) {
+        audioLossCounter.onSuccess()
+
+        val speed = filters?.timescale?.speed ?: 1.0f
+        val rate = filters?.timescale?.rate ?: 1.0f
+
+        realPosition = realPosition?.plus(20 * speed * rate)
+      } else {
         audioLossCounter.onLoss()
       }
 
@@ -186,7 +198,6 @@ class Player(
 
     @Override
     override fun retrieveOpusFrame(buf: ByteBuf) {
-      audioLossCounter.onSuccess()
       buf.writeBytes(lastFrame.data)
     }
   }
