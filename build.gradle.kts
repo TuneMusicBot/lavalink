@@ -26,11 +26,11 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.grgit.Grgit
 
 buildscript {
-  val kotlinVersion     = "1.6.0"
-  val gradleGitVersion  = "2.3.1"
-  val springBootVersion = "2.6.2"
+  val kotlinVersion     = "1.6.10"
+  val gradleGitVersion  = "2.3.2"
+  val springBootVersion = "2.6.3"
   val sonarqubeVersion  = "3.3"
-  val testLoggerVersion = "1.6.0"
+  val testLoggerVersion = "3.1.0"
 
   repositories {
     mavenLocal()
@@ -52,12 +52,12 @@ buildscript {
 plugins {
   application
   idea
-  id("org.springframework.boot") version "2.6.2"
-  id("com.gorylenko.gradle-git-properties") version "2.3.1"
-  id("org.ajoberstar.grgit") version "4.1.0"
-  kotlin("jvm") version "1.6.0"
-  kotlin("plugin.spring") version "1.6.0"
-  id("com.adarshr.test-logger") version "1.6.0"
+  id("org.springframework.boot") version "2.6.3"
+  id("com.gorylenko.gradle-git-properties") version "2.3.2"
+  id("org.ajoberstar.grgit") version "4.1.1"
+  kotlin("jvm") version "1.6.10"
+  kotlin("plugin.spring") version "1.6.10"
+  id("com.adarshr.test-logger") version "3.1.0"
 }
 
 group = "lavalink"
@@ -81,7 +81,7 @@ repositories {
   maven("https://m2.dv8tion.net/releases")
 }
 
-val kotlinVersion              = "1.6.0"
+val kotlinVersion              = "1.6.10"
 
 val lavaplayerVersion          = "87215b8"
 val lavaplayerIpRotatorVersion = "0.2.3"
