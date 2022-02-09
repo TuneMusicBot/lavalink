@@ -96,7 +96,6 @@ class AudioLoaderRestHandler(
       exception.put("severity", result.exception.severity.toString())
 
       json.put("exception", exception)
-      log.error("Track loading failed", result.exception)
     }
 
     return json

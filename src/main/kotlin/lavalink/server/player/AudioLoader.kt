@@ -90,7 +90,7 @@ class AudioLoader(
   }
 
   override fun loadFailed(e: FriendlyException) {
-    log.error("Load failed", e)
+    log.error("Track loading failed", e)
     this.loadResult.complete(LoadResult(e))
   }
 
