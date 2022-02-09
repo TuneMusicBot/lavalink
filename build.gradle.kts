@@ -83,7 +83,7 @@ repositories {
 
 val kotlinVersion              = "1.6.10"
 
-val lavaplayerVersion          = "87215b8"
+val lavaplayerVersion          = "9df3e20"
 val lavaplayerIpRotatorVersion = "0.2.3"
 val nettyEpollVersion          = "4.1.72.Final:linux-x86_64"
 val lavadspVersion             = "0.7.7"
@@ -93,7 +93,7 @@ val springWebSocketVersion     = "5.3.15"
 val prometheusVersion          = "0.14.1"
 val koeVersion                 = "4835255"
 val logbackVersion             = "1.2.10"
-val sentryVersion              = "5.6.0"
+val sentryVersion              = "5.6.1"
 val oshiVersion                = "6.1.0"
 val jsonOrgVersion             = "20210307"
 val gsonVersion                = "2.8.9"
