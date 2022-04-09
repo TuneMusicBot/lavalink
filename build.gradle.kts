@@ -26,7 +26,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.grgit.Grgit
 
 buildscript {
-  val kotlinVersion     = "1.6.10"
+  val kotlinVersion     = "1.6.20"
   val gradleGitVersion  = "2.3.2"
   val springBootVersion = "2.6.5"
   val sonarqubeVersion  = "3.3"
@@ -55,8 +55,8 @@ plugins {
   id("org.springframework.boot") version "2.6.5"
   id("com.gorylenko.gradle-git-properties") version "2.3.2"
   id("org.ajoberstar.grgit") version "4.1.1"
-  kotlin("jvm") version "1.6.10"
-  kotlin("plugin.spring") version "1.6.10"
+  kotlin("jvm") version "1.6.20"
+  kotlin("plugin.spring") version "1.6.20"
   id("com.adarshr.test-logger") version "3.1.0"
 }
 
@@ -81,7 +81,7 @@ repositories {
   maven("https://m2.dv8tion.net/releases")
 }
 
-val kotlinVersion              = "1.6.10"
+val kotlinVersion              = "1.6.20"
 
 val lavaplayerVersion          = "0db9ab6"
 val lavaplayerIpRotatorVersion = "0.2.3"
@@ -91,7 +91,7 @@ val lavadspVersion             = "0.7.7"
 val springBootVersion          = "2.6.5"
 val springWebSocketVersion     = "5.3.17"
 val prometheusVersion          = "0.15.0"
-val koeVersion                 = "fbd5241"
+val koeVersion                 = "ca3d167"
 val logbackVersion             = "1.2.11"
 val sentryVersion              = "5.7.0"
 val oshiVersion                = "6.1.5"
