@@ -83,7 +83,7 @@ repositories {
 
 val kotlinVersion              = "1.6.20"
 
-val lavaplayerVersion          = "3559941"
+val lavaplayerVersion          = "2127faf"
 val lavaplayerIpRotatorVersion = "0.2.3"
 val nettyEpollVersion          = "4.1.76.Final"
 val lavadspVersion             = "0.7.8"
