@@ -83,15 +83,15 @@ repositories {
 
 val kotlinVersion              = "1.6.20"
 
-val lavaplayerVersion          = "0db9ab6"
+val lavaplayerVersion          = "3559941"
 val lavaplayerIpRotatorVersion = "0.2.3"
-val nettyEpollVersion          = "4.1.75.Final:linux-x86_64"
-val lavadspVersion             = "0.7.7"
+val nettyEpollVersion          = "4.1.76.Final"
+val lavadspVersion             = "0.7.8"
 
 val springBootVersion          = "2.6.6"
 val springWebSocketVersion     = "5.3.18"
 val prometheusVersion          = "0.15.0"
-val koeVersion                 = "10ff1a6"
+val koeVersion                 = "6d5414e"
 val logbackVersion             = "1.2.11"
 val sentryVersion              = "5.7.2"
 val oshiVersion                = "6.1.5"
@@ -105,6 +105,7 @@ dependencies {
   // Audio Sending
   implementation("com.github.davidffa.koe:ext-udpqueue:$koeVersion") {
     exclude("com.sedmelluq", "lavaplayer")
+    exclude("com.sedmelluq", "lava-common")
   }
   implementation("com.github.davidffa.koe:core:$koeVersion") {
     exclude("org.slf4j", "slf4j-api")
@@ -112,7 +113,8 @@ dependencies {
   }
 
   // Transport
-  implementation("io.netty:netty-transport-native-epoll:$nettyEpollVersion")
+  implementation("io.netty:netty-transport-native-epoll:$nettyEpollVersion:linux-x86_64")
+  implementation("io.netty:netty-transport-native-kqueue:$nettyEpollVersion:osx-aarch_64")
 
   // Audio Player
   implementation("com.github.davidffa:lavaplayer-fork:$lavaplayerVersion")
@@ -121,7 +123,7 @@ dependencies {
   }
 
   // Filters
-  implementation("com.github.natanbc:lavadsp:$lavadspVersion") {
+  implementation("com.github.davidffa:lavadsp-fork:$lavadspVersion") {
     exclude("com.sedmelluq", "lavaplayer")
   }
 

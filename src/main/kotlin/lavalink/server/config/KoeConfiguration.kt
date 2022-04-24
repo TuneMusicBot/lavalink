@@ -30,6 +30,10 @@ import io.netty.channel.epoll.Epoll
 import io.netty.channel.epoll.EpollDatagramChannel
 import io.netty.channel.epoll.EpollEventLoopGroup
 import io.netty.channel.epoll.EpollSocketChannel
+import io.netty.channel.kqueue.KQueue
+import io.netty.channel.kqueue.KQueueDatagramChannel
+import io.netty.channel.kqueue.KQueueEventLoopGroup
+import io.netty.channel.kqueue.KQueueSocketChannel
 import moe.kyokobot.koe.KoeOptions
 import moe.kyokobot.koe.codec.udpqueue.UdpQueueFramePollerFactory
 import org.slf4j.Logger
@@ -51,9 +55,11 @@ class KoeConfiguration(val configProperties: KoeConfigProperties) {
     setHighPacketPriority(configProperties.highPacketPriority)
 
     /* JDA-NAS */
-    // Maybe add Windows natives back?
-    val nasSupported = os.contains("linux", true)
-      && arch.equals("amd64", true)
+    val nasSupported =
+      (os.contains("linux", true)
+      && (arch.equals("amd64", true) || arch.equals("x86", true) || arch.equals("aarch64", true)))
+              || os.contains("mac", true)
+              || (os.contains("win", true) && arch.equals("amd64") || arch.equals("x86"))
 
     if (nasSupported) {
       log.info("Enabling JDA-NAS")
@@ -71,11 +77,18 @@ class KoeConfiguration(val configProperties: KoeConfigProperties) {
     }
 
     /* Epoll Transport */
-    if (configProperties.useEpoll && Epoll.isAvailable()) {
-      log.info("Using Epoll Transport.")
-      setEventLoopGroup(EpollEventLoopGroup())
-      setDatagramChannelClass(EpollDatagramChannel::class.java)
-      setSocketChannelClass(EpollSocketChannel::class.java)
+    if (configProperties.useEpoll) {
+      if (Epoll.isAvailable()) {
+        log.info("Using Epoll Transport.")
+        setEventLoopGroup(EpollEventLoopGroup())
+        setDatagramChannelClass(EpollDatagramChannel::class.java)
+        setSocketChannelClass(EpollSocketChannel::class.java)
+      } else if (KQueue.isAvailable()) {
+        log.info("Using KQueue Transport.")
+        setEventLoopGroup(KQueueEventLoopGroup())
+        setDatagramChannelClass(KQueueDatagramChannel::class.java)
+        setSocketChannelClass(KQueueSocketChannel::class.java)
+      }
     }
 
     /* Byte Buf Allocator */
