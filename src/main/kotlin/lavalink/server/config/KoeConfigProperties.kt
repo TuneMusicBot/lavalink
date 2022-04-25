@@ -30,6 +30,7 @@ import org.springframework.stereotype.Component
 @Component
 class KoeConfigProperties {
   var useEpoll: Boolean = true
+  var useKQueue: Boolean = false
   var highPacketPriority: Boolean = true
   var bufferDurationMs: Int? = null
   var byteBufAllocator: String = "pooled"

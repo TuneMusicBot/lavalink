@@ -34,6 +34,9 @@ import io.netty.channel.kqueue.KQueue
 import io.netty.channel.kqueue.KQueueDatagramChannel
 import io.netty.channel.kqueue.KQueueEventLoopGroup
 import io.netty.channel.kqueue.KQueueSocketChannel
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.nio.NioDatagramChannel
+import io.netty.channel.socket.nio.NioSocketChannel
 import moe.kyokobot.koe.KoeOptions
 import moe.kyokobot.koe.codec.udpqueue.UdpQueueFramePollerFactory
 import org.slf4j.Logger
@@ -76,19 +79,24 @@ class KoeConfiguration(val configProperties: KoeConfigProperties) {
         + "GC pauses may cause your bot to stutter during playback.")
     }
 
-    /* Epoll Transport */
-    if (configProperties.useEpoll) {
-      if (Epoll.isAvailable()) {
-        log.info("Using Epoll Transport.")
-        setEventLoopGroup(EpollEventLoopGroup())
-        setDatagramChannelClass(EpollDatagramChannel::class.java)
-        setSocketChannelClass(EpollSocketChannel::class.java)
-      } else if (KQueue.isAvailable()) {
-        log.info("Using KQueue Transport.")
-        setEventLoopGroup(KQueueEventLoopGroup())
-        setDatagramChannelClass(KQueueDatagramChannel::class.java)
-        setSocketChannelClass(KQueueSocketChannel::class.java)
-      }
+    if (configProperties.useEpoll && Epoll.isAvailable()) {
+      /* Epoll Transport */
+      log.info("Using Epoll Transport.")
+      setEventLoopGroup(EpollEventLoopGroup())
+      setDatagramChannelClass(EpollDatagramChannel::class.java)
+      setSocketChannelClass(EpollSocketChannel::class.java)
+    } else if (configProperties.useKQueue && KQueue.isAvailable()) {
+      /* KQueue Transport */
+      log.info("Using KQueue Transport.")
+      setEventLoopGroup(KQueueEventLoopGroup())
+      setDatagramChannelClass(KQueueDatagramChannel::class.java)
+      setSocketChannelClass(KQueueSocketChannel::class.java)
+    } else {
+      /* Nio Transport */
+      log.info("Using Nio Transport.")
+      setEventLoopGroup(NioEventLoopGroup())
+      setDatagramChannelClass(NioDatagramChannel::class.java)
+      setSocketChannelClass(NioSocketChannel::class.java)
     }
 
     /* Byte Buf Allocator */
