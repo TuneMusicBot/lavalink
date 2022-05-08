@@ -35,6 +35,7 @@ object AudioSourcesConfig {
   var http: Boolean = true
   var odysee: Boolean = true
   var reddit: Boolean = true
+  var rumble: Boolean = true
   var soundcloud: Boolean = true
   var tiktok: Boolean = true
   var twitch: Boolean = true

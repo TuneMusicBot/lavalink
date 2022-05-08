@@ -20,6 +20,7 @@ lavalink:
       http: true
       odysee: true
       reddit: true
+      rumble: true
       soundcloud: true
       tiktok: true
       twitch: true
