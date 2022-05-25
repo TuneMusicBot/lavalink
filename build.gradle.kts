@@ -28,7 +28,7 @@ import org.ajoberstar.grgit.Grgit
 buildscript {
   val kotlinVersion     = "1.6.21"
   val gradleGitVersion  = "2.3.2"
-  val springBootVersion = "2.6.7"
+  val springBootVersion = "2.7.0"
   val sonarqubeVersion  = "3.3"
   val testLoggerVersion = "3.1.0"
 
@@ -52,7 +52,7 @@ buildscript {
 plugins {
   application
   idea
-  id("org.springframework.boot") version "2.6.7"
+  id("org.springframework.boot") version "2.7.0"
   id("com.gorylenko.gradle-git-properties") version "2.3.2"
   id("org.ajoberstar.grgit") version "4.1.1"
   kotlin("jvm") version "1.6.21"
@@ -88,7 +88,7 @@ val lavaplayerIpRotatorVersion = "0.2.3"
 val nettyEpollVersion          = "4.1.77.Final"
 val lavadspVersion             = "0.7.8"
 
-val springBootVersion          = "2.6.7"
+val springBootVersion          = "2.7.0"
 val springWebSocketVersion     = "5.3.20"
 val prometheusVersion          = "0.15.0"
 val koeVersion                 = "b03db05"
