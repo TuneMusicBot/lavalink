@@ -1,4 +1,4 @@
-# TuneBotMusic/lavalink
+# TuneMusicBot/lavalink
 
 A custom lavalink forked from [davidffa](https://github.com/davidffa/lavalink).
 
