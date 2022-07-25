@@ -48,7 +48,7 @@ class SocketContext internal constructor(
   private val serverConfig: ServerConfig,
   private var session: WebSocketSession,
   private val socketServer: SocketServer,
-  private val koe: KoeClient
+  val koe: KoeClient
 ) {
 
   companion object {

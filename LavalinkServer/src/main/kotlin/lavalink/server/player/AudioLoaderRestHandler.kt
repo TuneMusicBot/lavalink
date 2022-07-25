@@ -115,7 +115,10 @@ companion object {
   @GetMapping(value = ["/loadtracks"], produces = ["application/json"])
   @ResponseBody
   fun getLoadTracks(
-    @RequestParam identifier: String, @RequestParam user: String): CompletionStage<ResponseEntity<String>> {
+    request: HttpServletRequest,
+    @RequestParam identifier: String,
+    @RequestParam user: String): CompletionStage<ResponseEntity<String>> {
+    log(request)
     log.info("Got request to load for identifier \"${identifier}\"")
 
     return AudioLoader(audioPlayerManager).load(identifier)
@@ -131,6 +134,7 @@ companion object {
   @ResponseBody
   fun postLoadTracks(
     request: HttpServletRequest, @RequestBody body: String): CompletionStage<ResponseEntity<String>> {
+    log(request)
     val json = JSONObject(body)
     val identifier = json.getString("identifier")
     log.info("Got request to load for identifier \"${identifier}\"")
